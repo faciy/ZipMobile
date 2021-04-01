@@ -12,6 +12,8 @@ target 'Zip_Livreur_Mobile_App' do
     :hermes_enabled => false
   )
 
+  pod 'BVLinearGradient', :path => '../node_modules/react-native-linear-gradient'
+
   target 'Zip_Livreur_Mobile_AppTests' do
     inherit! :complete
     # Pods for testing
