@@ -1,10 +1,12 @@
 import React from 'react'
 import { View, Text, StyleSheet } from 'react-native';
-import LoginScren from './src/screens/LoginScren';
+// import LoginScren from './src/screens/LoginScren';
+import MapView from './src/screens/MapView';
 
 const App = () => {
   return (
-      <LoginScren />
+      // <LoginScren />
+      <MapView />
   )
 }
 

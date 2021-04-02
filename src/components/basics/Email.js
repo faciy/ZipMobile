@@ -1,6 +1,6 @@
 import React from 'react'
 import { View, StyleSheet, Image } from 'react-native';
-import {widthPercentageToDP as wp, heightPercentageToDP as hp} from 'react-native-responsive-screen';
+import {widthPercentageToDP as wp, heightPercentageToDP as hp,} from 'react-native-responsive-screen';
 import Input from '../common/Input';
 import email from '../../assets/icons/email.png';
 
@@ -13,7 +13,7 @@ const Email = () => {
                     style={styles.emailLogo}
                     />
                     <Input 
-                    placeholder='Email ou Télephone'
+                    placeholder='Email ou Téléphone'
                     placeholderTextColor='black'
                     />
             </View>

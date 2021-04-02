@@ -3,7 +3,7 @@ import { View, Text, StyleSheet, TouchableOpacity } from 'react-native'
 import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen';
 import LinearGradient from 'react-native-linear-gradient';
 
-const ConnectButton = ({ title }) => {
+const ConnectButton = ({ title, button }) => {
     return (
         <View style={styles.container}>
             <LinearGradient 
@@ -11,7 +11,7 @@ const ConnectButton = ({ title }) => {
              colors={['#2568B0', '#44ACDA']}
                 style={styles.gradiant}>
                 <TouchableOpacity
-                    onPress={() => { }}
+                    onPress={button}
                     style={styles.connect}
                 >
                     <Text style={styles.title}>{title}</Text>
