@@ -16,7 +16,7 @@ const LoginScren = () => {
         <ScrollView>
             <View style={styles.container}>
                     <ImageBackground source={bg} style={styles.header}>
-                        <Text style={styles.text}>wwww.zip.com</Text>
+                        <Text style={styles.text}>www.zip.com</Text>
                         <View style={styles.logoContainer}>
                             <Image
                                 source={logoZip}
@@ -87,6 +87,5 @@ const styles = StyleSheet.create({
         top: hp('15%')
     }
 });
-
 
 export default LoginScren;

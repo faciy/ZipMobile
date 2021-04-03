@@ -1,14 +1,14 @@
 import React from 'react'
 import { 
-    View, StyleSheet, Text, Image 
+    View, ImageBackground, StyleSheet, Text, TouchableOpacity, Image 
 } from 'react-native';
 import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen';
-import Footer from '../components/basics/Footer';
+import FooterOther from '../components/basics/FooterOther';
 import Navbar from '../components/common/Navbar';
 import Body from '../components/basics/Body';
 import panneauOrange from './../assets/icons/panneau_orange.png';
 
-const MapView = () => {
+const OtherMapView = () => {
     return (
         <View style={styles.container}>
             <Navbar />
@@ -16,11 +16,8 @@ const MapView = () => {
                 <Body />
             </View>
             <View style={styles.footer}>
-                <Footer 
-                image={<Image source={panneauOrange} style={styles.panneau}/>}
-                duree='35 min ' distance='(4.5km)' price='2500 Fcfa'
-                placeOne='Cocody angré terminus 81'
-                placeTwo='7è Tranche café de vervailles'
+                <FooterOther 
+                 code='C-0215' duree='2 min' distance='O.5 km'
                 />
             </View>
         </View>
@@ -58,4 +55,4 @@ const styles = StyleSheet.create({
 });
 
 
-export default MapView;
+export default OtherMapView;

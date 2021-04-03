@@ -4,17 +4,17 @@ import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-nat
 import panneauOrange from '../../assets/icons/panneau_orange.png';
 import ConnectButton from '../common/ConnectButton';
 
-const Footer = ({duree, distance,price,placeOne,placeTwo}) => {
+const Footer = ({duree, distance,price,placeOne,placeTwo, image}) => {
     return (
         <View style={styles.container}>
             <View style={styles.tarifText}>
                 <Text>
                     <Text style={styles.duree}>{duree}</Text> 
-                    ({distance})</Text>
+                    {distance}</Text>
                 <Text style={styles.price}>{price}</Text>
             </View>
             <View style={styles.containerPlace}>
-                <Image source={panneauOrange} style={styles.panneau}/>
+                {image}
                 <View style={styles.infoPlace}>
                     <Text style={styles.placeOne}>{placeOne}</Text>
                     <Text style={styles.placeTwo}>{placeTwo}</Text>
@@ -52,10 +52,6 @@ const styles = StyleSheet.create({
     },
     infoPlace:{
         paddingHorizontal:wp('4%'),
-    },
-    panneau:{
-        height:hp('8%'),
-        width:wp('6%')
     },
     placeOne:{
         fontWeight:'bold'
