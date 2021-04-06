@@ -31,7 +31,8 @@ const Header = () => {
 
 const styles = StyleSheet.create({
     container: {
-        backgroundColor: 'grey',
+        backgroundColor: '#FAFAFA',
+        opacity: 1,
         paddingHorizontal: wp('10%'),
     },
     navbar: {
@@ -44,7 +45,7 @@ const styles = StyleSheet.create({
         height: hp('2%'),
     },
     iconOther: {
-        width: wp('3%'),
+        width: wp(' 5%'),
         height: hp('2%'),
     },
     iconOne: {
@@ -54,7 +55,7 @@ const styles = StyleSheet.create({
         bottom:hp('3%')
     },
     text:{
-        color:'white',
+        color:'black',
         fontWeight:'bold',
         fontSize:wp('5%')
     }

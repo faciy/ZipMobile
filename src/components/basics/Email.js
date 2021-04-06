@@ -4,7 +4,7 @@ import {widthPercentageToDP as wp, heightPercentageToDP as hp,} from 'react-nati
 import Input from '../common/Input';
 import email from '../../assets/icons/email.png';
 
-const Email = () => {
+const Email = ({borderColorError}) => {
     return (
         <View>
             <View style={styles.email}>
@@ -13,6 +13,7 @@ const Email = () => {
                     style={styles.emailLogo}
                     />
                     <Input 
+                    borderColorError={borderColorError}
                     placeholder='Email ou Téléphone'
                     placeholderTextColor='black'
                     />

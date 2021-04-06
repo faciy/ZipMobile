@@ -34,7 +34,7 @@ const styles = StyleSheet.create({
     iconEye: {
         width: wp('5%'),
         height: hp('2%'),
-        tintColor: 'grey'
+        tintColor: 'grey',
     }
 });
 

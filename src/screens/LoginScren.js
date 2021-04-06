@@ -1,5 +1,5 @@
-import React,{useState} from 'react'
-import { View, Text, StyleSheet, Image, ScrollView, ImageBackground } from 'react-native';
+import React, { useState, useEffect } from 'react'
+import { View, Text, StyleSheet, Image, ScrollView, ImageBackground, ToastAndroid } from 'react-native';
 import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen';
 import logoZip from '../assets/icons/logoZip.png';
 import Email from '../components/basics/Email';
@@ -11,26 +11,57 @@ import bg from '../assets/images/bg.png';
 const LoginScren = () => {
 
     const [securityText, setsecurityText] = useState(true)
+    const [password, setPassword] = useState('')
+    const [borderColorError, setBorderColorError] = useState(true)
+    const [messageError, setMessageError] = useState(false)
+
+    useEffect(() => {
+        setTimeout(() => {
+            setBorderColorError(true)
+            setMessageError(false)
+        }, 5000);
+        return clearTimeout()
+    })
+
+    const Connect = (password) => {
+        if (password == '') {
+            alert('Veuillez entrer vos informations')
+        } else if (password.length < 5) {
+            alert('Caractère insuffisant')
+        } else if (password !== 'charles') {
+                setBorderColorError(false)
+                setMessageError(true)
+        }
+    }
 
     return (
         <ScrollView>
             <View style={styles.container}>
-                    <ImageBackground source={bg} style={styles.header}>
-                        <Text style={styles.text}>www.zip.com</Text>
-                        <View style={styles.logoContainer}>
-                            <Image
-                                source={logoZip}
-                                style={styles.logoZip}
-                            />
-                        </View>
-                    </ImageBackground>
+                <ImageBackground source={bg} style={styles.header}>
+                    <Text style={styles.text}>www.zip.com</Text>
+                    <View style={styles.logoContainer}>
+                        <Image
+                            source={logoZip}
+                            style={styles.logoZip}
+                        />
+                    </View>
+                </ImageBackground>
                 <View style={styles.body}>
                     <View style={styles.containerTextInput}>
-                        <Email />
-                        <Password securityText={securityText}
-                        setSecurityText={setsecurityText}
+                        <Email
+                            borderColorError={borderColorError ? '#C3D3D4' : '#C3D3D4'}
                         />
-                        <ConnectButton title='Se connecter' />
+                        <Password
+                            ErrorMessage={messageError}
+                            borderColorError={borderColorError ? '#C3D3D4' : 'red'}
+                            value={password}
+                            onChangeText={(pass) => setPassword(pass)}
+                            securityText={securityText}
+                            setSecurityText={setsecurityText}
+                        />
+                        <ConnectButton
+                            button={() => Connect(password)}
+                            title='Se connecter' />
                         <View style={styles.otherButton}>
                             <OtherButton
                                 button={() => console.log('ok')}
@@ -58,7 +89,7 @@ const styles = StyleSheet.create({
         backgroundColor: 'blue',
         justifyContent: 'center',
         alignItems: 'center',
-        height:hp('100%'),
+        height: hp('100%'),
     },
     body: {
         flex: 3,
@@ -73,11 +104,11 @@ const styles = StyleSheet.create({
     logoZip: {
         width: wp('20%'),
         height: hp('10%'),
-        top:hp('5%')
+        top: hp('5%')
     },
     text: {
         color: 'white',
-        top:hp('5%')
+        top: hp('5%')
     },
     otherButton: {
         flexDirection: 'row',

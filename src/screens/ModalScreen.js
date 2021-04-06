@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { View, Text, StyleSheet, TouchableOpacity, Modal, Dimensions } from 'react-native';
+import { View, Text, StyleSheet, TouchableOpacity, Modal } from 'react-native';
 import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen';
 
 const ModalScreen = () => {
@@ -38,7 +38,7 @@ const ModalScreen = () => {
                 >
                     <View style={styles.modalContainer}>
                         <Text style={{ fontSize: 16, fontWeight: 'bold', top: hp('3%') }}>Avez vous des réclamations?</Text>
-                        <Text style={{ textAlign: 'center', top: hp('5%') }}>L’histoire des consoles de jeux vidéo en Amérique du Nord est fa été mis en péril par un mélange d’orgueil et de mauvaises idées. </Text>
+                        <Text style={styles.message}>L’histoire des consoles de jeux vidéo en Amérique du Nord est fa été mis en péril par un mélange d’orgueil et de mauvaises idées. </Text>
                     </View>
                     <View style={styles.buttonCard}>
                         <TouchableOpacity
@@ -49,7 +49,9 @@ const ModalScreen = () => {
                         </TouchableOpacity>
                         <TouchableOpacity
                             onPress={() => Validate()}
-                            style={styles.connectTwo}
+                            style={[styles.connectOne, {borderColor: '#44ACDA',
+                            backgroundColor:'#44ACDA',
+                            left:wp('5%')}]}
                         >
                             <Text style={styles.title}>Oui</Text>
                         </TouchableOpacity>
@@ -70,7 +72,7 @@ const styles = StyleSheet.create({
         flex: 1,
         alignItems: 'center',
         justifyContent: 'center',
-        backgroundColor: 'grey'
+        backgroundColor: '#95989A'
     },
     modalBtn: {
         backgroundColor: 'red'
@@ -100,24 +102,15 @@ const styles = StyleSheet.create({
         backgroundColor:'white',
         borderColor: '#44ACDA',
         right:wp('5%')
-
-    },
-    connectTwo: {
-        height: hp('8%'),
-        width:wp('35%'),
-        alignItems: 'center',
-        justifyContent: 'center',
-        borderWidth: 1,
-        borderRadius: wp('3%'),
-        borderColor: '#44ACDA',
-        backgroundColor:'#44ACDA',
-        left:wp('5%')
     },
     title: {
         color: 'white'
     },
-
-
+    message:{
+        textAlign: 'center', 
+        top: hp('5%'), 
+        color:'#7F7F7F'
+    }
 });
 
 export default ModalScreen;

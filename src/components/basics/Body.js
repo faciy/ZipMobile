@@ -61,9 +61,6 @@ const Body = () => {
 }
 
 const styles = StyleSheet.create({
-    container: {
-
-    },
     map: {
         height: hp('100%')
     },
@@ -83,7 +80,5 @@ const styles = StyleSheet.create({
         height:hp('2%')
     }
 });
-
-
 
 export default Body;

@@ -9,6 +9,7 @@ const ProfilHeader = () => {
             <ImageBackground source={bg} style={styles.header}>
                 <View style={styles.headerText}>
                     <TouchableOpacity
+                        onPress={() => {}}
                         style={styles.touch}
                     >
                         <Image source={leftchevron} style={styles.arrow} />

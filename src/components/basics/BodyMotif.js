@@ -1,11 +1,26 @@
 import React, {useState} from 'react'
 import { View, Text, StyleSheet, TextInput, TouchableOpacity, Image } from 'react-native';
 import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen';
-import photo from '../../assets/icons/YvesBoah.jpg';
+import ImagePicker from 'react-native-image-crop-picker';
 
 const BodyMotif = () => {
 
     const [takePhoto, setTakePhoto] = useState(true)
+    const [image, setImage] = useState('https://reactnative.dev/img/tiny_logo.png')
+
+    const TakePhotoFromCamera = () => {
+        ImagePicker.openCamera({
+            width:wp('10%') ,
+            compressImageMaxHeight:300,
+            compressImageMaxWidth:300,
+            compressImageQuality:0.7,
+            height:hp('5%'),
+            cropping: true
+          }).then(image => {
+            console.log(image);
+            setImage(image.path)
+          });
+    }
 
     return (
         <View>
@@ -17,7 +32,7 @@ const BodyMotif = () => {
                     <TextInput
                         style={styles.textArea}
                         placeholder="Commentaire"
-                        placeholderTextColor="black"
+                        placeholderTextColor="#7D7D7D"
                         numberOfLines={10}
                         multiline={true}
                     />
@@ -25,33 +40,28 @@ const BodyMotif = () => {
                 <View style={styles.cardPhoto}>
                     {takePhoto ? 
                     <TouchableOpacity
-                    onPress={() => setTakePhoto(!takePhoto)}
-
+                    onPress={() => {
+                        setTakePhoto(!takePhoto)
+                        TakePhotoFromCamera() 
+                    }}
                     >
                     <Text style={styles.textPhoto}>Prendre une photo</Text>
                     </TouchableOpacity>:
                     <TouchableOpacity
-                    onPress={() => setTakePhoto(!takePhoto)}
+                    onPress={() => {TakePhotoFromCamera()}}
                         style={styles.image}
                     >
-                        <Image source={photo} style={{
-                            width:wp('10%') ,height:hp('5%'), borderRadius:hp('5%')
-                        }} />
-                    <Text style={[styles.textPhoto, {paddingLeft:wp('5%')}]}>Prendre une photo</Text>
+                        <Image source={{ uri:image
+                        }} style={styles.uri} />
+                    <Text style={[styles.textPhoto, {paddingLeft:wp('5%')}]}>Changer la photo</Text>
                     </TouchableOpacity>
                 }
                 </View>
                 <View style={styles.buttonCard}>
-                <TouchableOpacity
-                    onPress={() => {}}
-                    style={styles.connectOne}
-                >
-                    <Text style={styles.title}>Annuler</Text>
+                <TouchableOpacity onPress={() => {}} style={styles.connectOne}>
+                    <Text style={{color:'#44ACDA'}}>Annuler</Text>
                 </TouchableOpacity>
-                <TouchableOpacity
-                    onPress={() => {}}
-                    style={styles.connectTwo}
-                >
+                <TouchableOpacity onPress={() => {}} style={[styles.connectOne, {backgroundColor:'#44ACDA'}]}>
                     <Text style={styles.title}>Envoyer</Text>
                 </TouchableOpacity>
                 </View>
@@ -63,11 +73,11 @@ const BodyMotif = () => {
 const styles = StyleSheet.create({
     cardCommentaire: {
         height: hp('100%'),
-        backgroundColor: 'grey',
+        backgroundColor: '#FAFAFA',
         paddingHorizontal: wp('10%'),
     },
     textAreaContainer: {
-        borderColor: 'white',
+        borderColor: '#D4D4D4',
         borderWidth: 2,
         borderRadius: wp('5%'),
         backgroundColor: 'white',
@@ -75,10 +85,10 @@ const styles = StyleSheet.create({
         top: hp('5%')
     },
     textArea: {
-        paddingHorizontal: wp('4%')
+        paddingHorizontal: wp('4%'),
     },
     text: {
-        color: 'white'
+        color: '#707070'
     },
     textContainer: {
         top: hp('2%'),
@@ -89,7 +99,7 @@ const styles = StyleSheet.create({
     },
     textPhoto: {
         textAlign: 'center',
-        color:'#44ACDA'
+        color:'#3369FF'
     },
     buttonCard: {
         top: hp('10%'),
@@ -105,16 +115,6 @@ const styles = StyleSheet.create({
         borderRadius: wp('3%'),
         borderColor: '#44ACDA',
     },
-    connectTwo: {
-        height: hp('8%'),
-        width:wp('35%'),
-        alignItems: 'center',
-        justifyContent: 'center',
-        borderWidth: 1,
-        borderRadius: wp('3%'),
-        borderColor: '#44ACDA',
-        backgroundColor:'#44ACDA'
-    },
     title: {
         color: 'white'
     },
@@ -122,6 +122,13 @@ const styles = StyleSheet.create({
         flexDirection:'row',
         justifyContent:'center',
         alignItems:'center',
+    },
+    uri:{
+        width:wp('10%') ,
+        height:hp('5%'), 
+        borderRadius:hp('5%'), 
+        borderColor:'grey',
+        borderWidth:1
     }
 });
 

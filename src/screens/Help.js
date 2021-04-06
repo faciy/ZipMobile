@@ -6,9 +6,9 @@ import plus from '../assets/icons/plus.png';
 import minus from '../assets/icons/minus.png';
 
 const dataArray = [
-    { title: `First Element`, content: 'Lorem ipsum dolor sit amet' },
-    { title: 'Second Element', content: 'Lorem ipsum dolor sit amet' },
-    { title: 'Third Element', content: 'Lorem ipsum dolor sit amet' },
+    { title: `J'ai oublié mon mot de passe`, content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut ' },
+    { title: 'Comment retirer son solde', content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut' },
+    { title: 'Quel est mon total de course', content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut' },
 ];
 function VirtualizedView(props) {
     return (
@@ -31,10 +31,10 @@ const Help = () => {
                     justifyContent: 'space-between',
                     alignItems: 'center',
                     backgroundColor: 'white',
-                    borderBottomColor:'grey',
-                    borderBottomWidth:1
+                    borderBottomColor: '#D4D4D4',
+                    borderBottomWidth: 1,
                 }}>
-                <Text style={{ fontWeight: '600' }}> {item.title}</Text>
+                <Text style={{ fontWeight: '600', color: '#2568B0' }}> {item.title}</Text>
                 {expanded ? (
                     <Image source={minus} style={styles.image} />
                 ) : (
@@ -48,14 +48,14 @@ const Help = () => {
             <Container>
                 <Header style={styles.header}>
                     <Left>
-                        <TouchableOpacity 
-                        style={styles.button} transparent>
+                        <TouchableOpacity
+                            style={styles.button} transparent>
                             <Icon
-                                style={{color:'white'}}
+                                style={{ color: '#000000' }}
                                 name='chevron-back-outline'
                             />
-                            <View style={{justifyContent:'center'}}> 
-                            <Text style={{color:'white'}}>Retour</Text>
+                            <View style={{ justifyContent: 'center' }}>
+                                <Text style={{ color: '#000000' }}>Retour</Text>
                             </View>
                         </TouchableOpacity>
                     </Left>
@@ -64,7 +64,8 @@ const Help = () => {
                     </Body>
                 </Header>
                 <Content padder>
-                    <Accordion dataArray={dataArray} expanded={[0]} renderHeader={_renderHeader} />
+                    <Accordion dataArray={dataArray} contentStyle={{ color: "#7F7F7F" }} 
+                        expanded={[0]} renderHeader={_renderHeader} />
                 </Content>
             </Container>
         </VirtualizedView>
@@ -77,16 +78,18 @@ const styles = StyleSheet.create({
     },
     image: {
         width: 20,
-        height: 20
+        height: 20,
+        tintColor: '#2568B0'
     },
     header: {
-        backgroundColor: 'grey',
+        backgroundColor: '#FAFAFA',
     },
-    title:{
-        left:wp('15%')
+    title: {
+        left: wp('15%'),
+        color: '#000000'
     },
-    button:{
-        flexDirection:'row',
+    button: {
+        flexDirection: 'row',
     }
 });
 

@@ -5,7 +5,7 @@ import Input from '../common/Input';
 import padlock from '../../assets/icons/padlock.png';
 import Eye from '../common/Eye';
 
-const Password = ({securityText, setSecurityText}) => {
+const Password = ({securityText, setSecurityText, value, onChangeText, borderColorError, ErrorMessage}) => {
     return (
         <View>
             <View style={styles.password}>
@@ -14,11 +14,15 @@ const Password = ({securityText, setSecurityText}) => {
                     style={styles.padlock}
                     />
                     <Input 
+                    ErrorMessage={ErrorMessage}
+                    borderColorError={borderColorError}
+                    value={value}
+                    onChangeText={onChangeText}
                     secureTextEntry={securityText}
                     placeholder='Mot de passe'
                     placeholderTextColor='black'
                     />
-                    <Eye setSecurityText={setSecurityText} secureTextEntry={securityText} />
+                    {ErrorMessage ? null : <Eye setSecurityText={setSecurityText} secureTextEntry={securityText} />}
             </View>
         </View>
     )
